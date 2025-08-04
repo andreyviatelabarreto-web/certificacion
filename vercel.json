@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "name": "certificashop-frontend",
+  "builds": [
+    {
+      "src": "certificaciones-frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/certificaciones-frontend/$1"
+    }
+  ],
+  "buildCommand": "cd certificaciones-frontend && npm run build",
+  "outputDirectory": "certificaciones-frontend/dist",
+  "installCommand": "cd certificaciones-frontend && npm install",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/((?!api/.*).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+
